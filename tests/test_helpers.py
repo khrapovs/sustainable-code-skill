@@ -1,21 +1,12 @@
-#!/usr/bin/env -S uv run
-# /// script
-# dependencies = [
-#   "pytest>=7.0",
-#   "codecarbon>=2.4.1",
-# ]
-# requires-python = ">=3.8"
-# ///
-"""Unit tests for sustainable code helpers."""
-
 from pathlib import Path
+from typing import Generator
 
 import pytest
 from helpers import CodeMetrics, SustainableCodeAnalyzer
 
 
 @pytest.fixture(scope="session", autouse=True)
-def cleanup_emissions_csv() -> None:
+def cleanup_emissions_csv() -> Generator[None, None, None]:
     """Clean up emissions.csv file created by CodeCarbon after tests complete."""
     yield
     csv_file = Path("emissions.csv")
