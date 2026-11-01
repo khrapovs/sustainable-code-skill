@@ -42,3 +42,9 @@ convention = "numpy"
 
 [tool.ty.rules]
 no-matching-overload = "ignore"
+
+[tool.commitizen]
+version_scheme = "semver"
+version_provider = "uv"
+update_changelog_on_bump = true
+tag_format = "v$version"
