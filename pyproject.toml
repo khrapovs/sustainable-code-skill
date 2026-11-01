@@ -1,0 +1,44 @@
+[project]
+name = "sustainable-code-helpers"
+version = "0.1.0"
+description = "Sustainable code measurement and optimization helpers"
+requires-python = ">=3.8"
+dependencies = [
+    "codecarbon>=2.4.1",
+    "pytest>=7.0",
+]
+
+[dependency-groups]
+dev = [
+    "prek>=0.5.9",
+]
+
+[tool.ruff]
+line-length = 120
+src = ["skills"]
+
+[tool.ruff.lint]
+select = ["E", "F", "D", "B", "I", "ARG", "ANN"]
+ignore = [
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D106",
+    "D107",
+    "D213",
+    "D417",
+]
+preview = true
+extend-select = ["PLR0917"]
+
+[tool.ruff.lint.pylint]
+max-positional-args = 1
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ty.rules]
+no-matching-overload = "ignore"

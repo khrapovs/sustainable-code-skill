@@ -1,0 +1,11 @@
+# CodeCarbon emissions tracking
+*.csv
+
+# Python test artifacts
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# Local environment
+.venv/
+.idea
