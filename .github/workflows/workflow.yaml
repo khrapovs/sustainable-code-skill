@@ -1,4 +1,4 @@
-name: Tests, Code Quality, Build
+name: Tests, Code Quality
 
 on:
   push:
