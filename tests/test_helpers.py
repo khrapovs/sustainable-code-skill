@@ -171,7 +171,3 @@ class TestSustainableCodeAnalyzer:
         assert "reduction_kg" in comp
         assert "reduction_pct" in comp
         assert "direction" in comp
-
-
-if __name__ == "__main__":
-    pytest.main([__file__, "-v"])
