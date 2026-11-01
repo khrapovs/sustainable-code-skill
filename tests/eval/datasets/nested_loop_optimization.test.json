@@ -1,0 +1,25 @@
+{
+  "eval_set_id": "sustainable_code_eval",
+  "eval_cases": [
+    {
+      "eval_id": "nested_loop_optimization",
+      "conversation": [
+        {
+          "invocation_id": "",
+          "user_content": {
+            "parts": [
+              {
+                "text": "Can you measure the emissions of this function and suggest a greener approach?\n\ndef find_common_elements(first: list[int], second: list[int]) -> list[int]:\n    common = []\n    for item in first:\n        if item in second:\n            common.append(item)\n    return common"
+              }
+            ],
+            "role": "user"
+          },
+          "creation_timestamp": 0.0
+        }
+      ],
+      "creation_timestamp": 0.0,
+      "final_session_state": {}
+    }
+  ],
+  "creation_timestamp": 0.0
+}
