@@ -23,10 +23,10 @@ jobs:
           changelog_increment_filename: body.md
           push: true
       - name: Release
-        uses: ncipollo/release-action@v1
+        uses: softprops/action-gh-release@v3
         with:
-          tag: v${{ env.REVISION }}
-          bodyFile: "body.md"
-          skipIfReleaseExists: true
+          body_path: "body.md"
+          tag_name: ${{ env.REVISION }}
+          generate_release_notes: true
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
