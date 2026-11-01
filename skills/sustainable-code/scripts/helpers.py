@@ -220,7 +220,9 @@ def cli_compare(args: argparse.Namespace) -> None:
 
     print(f"Comparing {before_path} vs {after_path}...\n")
 
-    result = SustainableCodeAnalyzer.compare_implementations(before_code, after_code, project_name=before_path.stem)
+    result = SustainableCodeAnalyzer.compare_implementations(
+        original=before_code, optimized=after_code, project_name=before_path.stem
+    )
 
     print("Original Code:")
     print("  CO₂: {:.6f} kg CO₂eq".format(result["original"]["emissions_kg"]))
