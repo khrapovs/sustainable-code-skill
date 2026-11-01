@@ -1,0 +1,57 @@
+[project]
+name = "sustainable-code-skill"
+version = "0.1.0"
+description = "Sustainable code measurement and optimization skill"
+requires-python = ">=3.14"
+dependencies = [
+    "codecarbon>=2.4.1",
+    "pytest>=7.0",
+]
+
+[dependency-groups]
+dev = [
+    "prek>=0.5.9",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "src"]
+pythonpath = ["skills/sustainable-code/scripts"]
+
+[tool.ruff]
+line-length = 120
+src = ["skills"]
+
+[tool.ruff.lint]
+select = ["E", "F", "D", "B", "I", "ARG", "ANN"]
+ignore = [
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D106",
+    "D107",
+    "D213",
+    "D417",
+]
+preview = true
+extend-select = ["PLR0917"]
+
+[tool.ruff.lint.pylint]
+max-positional-args = 1
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ty.environment]
+root = ["./skills/sustainable-code/scripts"]
+
+[tool.ty.rules]
+no-matching-overload = "ignore"
+
+[tool.commitizen]
+version_scheme = "semver"
+version_provider = "uv"
+update_changelog_on_bump = true
+tag_format = "v$version"
