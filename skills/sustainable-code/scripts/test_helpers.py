@@ -143,7 +143,7 @@ class TestSustainableCodeAnalyzer:
         original = "result = sum(range(10))"
         optimized = "result = 45"
 
-        result = SustainableCodeAnalyzer.compare_implementations(original, optimized)
+        result = SustainableCodeAnalyzer.compare_implementations(original=original, optimized=optimized)
 
         assert isinstance(result, dict)
         assert "original" in result
@@ -159,7 +159,9 @@ class TestSustainableCodeAnalyzer:
         original = "result = sum(data)"
         optimized = "result = sum(range(100))"
 
-        result = SustainableCodeAnalyzer.compare_implementations(original, optimized, setup_code=setup)
+        result = SustainableCodeAnalyzer.compare_implementations(
+            original=original, optimized=optimized, setup_code=setup
+        )
 
         assert "original" in result
         assert "optimized" in result
@@ -170,7 +172,7 @@ class TestSustainableCodeAnalyzer:
         original = "x = 1"
         optimized = "y = 1"
 
-        result = SustainableCodeAnalyzer.compare_implementations(original, optimized)
+        result = SustainableCodeAnalyzer.compare_implementations(original=original, optimized=optimized)
         comp = result["comparison"]
 
         assert "baseline_kg" in comp

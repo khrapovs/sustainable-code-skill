@@ -81,7 +81,7 @@ class CodeMetrics:
             f"Rate: {self.emissions_rate_g_per_s:.4f} g CO₂/s"
         )
 
-    def compare(self, *, other: CodeMetrics) -> dict[str, Any]:
+    def compare(self, other: CodeMetrics) -> dict[str, Any]:
         """Compare with another CodeMetrics object.
 
         Args:
@@ -107,7 +107,7 @@ class SustainableCodeAnalyzer:
     """Main analyzer for measuring and comparing code implementations."""
 
     @staticmethod
-    def measure_code(*, code: str, project_name: str = "sustainable-code", setup_code: str = "") -> CodeMetrics:
+    def measure_code(code: str, *, project_name: str = "sustainable-code", setup_code: str = "") -> CodeMetrics:
         """Measure emissions of a code snippet.
 
         Args:
