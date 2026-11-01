@@ -1229,28 +1229,20 @@ wheels = [
 [[package]]
 name = "sustainable-code-skill"
 version = "0.2.4"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "codecarbon" },
-    { name = "pytest" },
-]
-
-[package.dev-dependencies]
-dev = [
     { name = "google-adk" },
     { name = "prek" },
+    { name = "pytest" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "codecarbon", specifier = ">=2.4.1" },
-    { name = "pytest", specifier = ">=7.0" },
-]
-
-[package.metadata.requires-dev]
-dev = [
     { name = "google-adk", specifier = ">=2.13.0" },
     { name = "prek", specifier = ">=0.5.9" },
+    { name = "pytest", specifier = ">=7.0" },
 ]
 
 [[package]]

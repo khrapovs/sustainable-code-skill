@@ -2,7 +2,7 @@ from pathlib import Path
 from typing import Generator
 
 import pytest
-from helpers import CodeMetrics, SustainableCodeAnalyzer
+from scripts.helpers import CodeMetrics, SustainableCodeAnalyzer
 
 
 @pytest.fixture(scope="session", autouse=True)
