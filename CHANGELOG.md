@@ -1,3 +1,9 @@
+## v0.3.0 (2026-11-14)
+
+### Feat
+
+- Refactor evaluation tests and improve agent instructions (#6)
+
 ## v0.2.4 (2026-11-01)
 
 ### Fix
