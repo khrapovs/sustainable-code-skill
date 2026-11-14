@@ -12,18 +12,42 @@ from pathlib import Path
 
 import pytest
 from google.adk.evaluation import AgentEvaluator
+from google.adk.evaluation.eval_case import EvalCase, Invocation
+from google.adk.evaluation.eval_config import EvalConfig
 from google.adk.evaluation.eval_set import EvalSet
+from google.genai import types as genai_types
 
 _AGENT_MODULE = "tests.eval.agent"
 _CURRENT_DIR = Path(__file__).parent
 _PROJECT_ROOT = _CURRENT_DIR.parent.parent
-_EVAL_SET_PATH = _CURRENT_DIR / "datasets" / "nested_loop_optimization.test.json"
+_CASE_DIR = _CURRENT_DIR / "cases" / "nested_loop_optimization"
 _OUTPUT_FILE_PATH = _PROJECT_ROOT / "artifacts" / "eval_results.csv"
+
+
+def build_eval_set() -> EvalSet:
+    """Build an EvalSet from markdown files."""
+    prompt_text = (_CASE_DIR / "prompt.md").read_text(encoding="utf-8")
+    expected_text = (_CASE_DIR / "expected_response.md").read_text(encoding="utf-8")
+
+    return EvalSet(
+        eval_set_id="sustainable_code_eval",
+        eval_cases=[
+            EvalCase(
+                eval_id="nested_loop_optimization",
+                conversation=[
+                    Invocation(
+                        user_content=genai_types.Content(role="user", parts=[genai_types.Part(text=prompt_text)]),
+                        final_response=genai_types.Content(role="model", parts=[genai_types.Part(text=expected_text)]),
+                    )
+                ],
+            )
+        ],
+    )
 
 
 def test_eval_set_loads_and_is_non_empty() -> None:
     """EvalSet dataset is valid and contains exactly one eval case."""
-    eval_set = EvalSet.model_validate_json(_EVAL_SET_PATH.read_text())
+    eval_set = build_eval_set()
 
     assert eval_set.eval_set_id == "sustainable_code_eval"
     assert len(eval_set.eval_cases) == 1
@@ -36,9 +60,13 @@ def test_eval_set_loads_and_is_non_empty() -> None:
 @pytest.mark.asyncio
 async def test_nested_loop_optimization_response_quality() -> None:
     """Agent correctly identifies the inefficiency and suggests a greener alternative."""
-    await AgentEvaluator.evaluate(
+    eval_set = build_eval_set()
+    eval_config = EvalConfig(criteria={"tool_trajectory_avg_score": 1.0, "response_match_score": 0.5})
+
+    await AgentEvaluator.evaluate_eval_set(
         agent_module=_AGENT_MODULE,
-        eval_dataset_file_path_or_dir=str(_EVAL_SET_PATH),
+        eval_set=eval_set,
+        eval_config=eval_config,
         num_runs=1,
         output_file=str(_OUTPUT_FILE_PATH),
         print_detailed_results=False,
