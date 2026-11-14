@@ -13,8 +13,4 @@ _SKILL_DIR = Path(__file__).parent.parent.parent / "skills" / "sustainable-code"
 
 _skill = load_skill_from_dir(str(_SKILL_DIR))
 
-root_agent = Agent(
-    model="gemini-3.8-flash",
-    name="sustainable_code_evaluator",
-    instruction=_skill.instructions,
-)
+root_agent = Agent(model="gemini-3.8-flash", name="sustainable_code_evaluator", instruction=_skill.instructions)

@@ -14,7 +14,6 @@ import pytest
 from google.adk.evaluation import AgentEvaluator
 from google.adk.evaluation.eval_set import EvalSet
 
-
 _AGENT_MODULE = "tests.eval.agent"
 _EVAL_SET_FILE = "tests/eval/datasets/nested_loop_optimization.test.json"
 
