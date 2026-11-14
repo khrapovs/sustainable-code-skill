@@ -30,6 +30,7 @@ def test_eval_set_loads_and_is_non_empty() -> None:
     assert eval_set.eval_cases[0].eval_id == "nested_loop_optimization"
     assert eval_set.eval_cases[0].conversation is not None
     assert len(eval_set.eval_cases[0].conversation) == 1
+    assert eval_set.eval_cases[0].conversation[0].final_response is not None
 
 
 @pytest.mark.asyncio
