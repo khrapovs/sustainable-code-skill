@@ -45,3 +45,7 @@
         def public_method(self):
             pass  # should be public
     ```
+
+## Code Formatting
+
+- Fit as much code as possible in one line as long as `line-length` parameter of `ruff` allows. Remove trailing commas in lists and function calls after the last argument and let ruff fix the format. Narrow column code is discouraged.
