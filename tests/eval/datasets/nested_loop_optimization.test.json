@@ -1,10 +1,10 @@
 {
-  "eval_set_id": "sustainable_code_eval",
+  "creation_timestamp": 0.0,
   "eval_cases": [
     {
-      "eval_id": "nested_loop_optimization",
       "conversation": [
         {
+          "creation_timestamp": 0.0,
           "invocation_id": "",
           "user_content": {
             "parts": [
@@ -13,13 +13,13 @@
               }
             ],
             "role": "user"
-          },
-          "creation_timestamp": 0.0
+          }
         }
       ],
       "creation_timestamp": 0.0,
+      "eval_id": "nested_loop_optimization",
       "final_session_state": {}
     }
   ],
-  "creation_timestamp": 0.0
+  "eval_set_id": "sustainable_code_eval"
 }

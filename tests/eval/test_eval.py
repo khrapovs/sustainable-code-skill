@@ -15,12 +15,15 @@ from google.adk.evaluation import AgentEvaluator
 from google.adk.evaluation.eval_set import EvalSet
 
 _AGENT_MODULE = "tests.eval.agent"
-_EVAL_SET_FILE = "tests/eval/datasets/nested_loop_optimization.test.json"
+_CURRENT_DIR = Path(__file__).parent
+_PROJECT_ROOT = _CURRENT_DIR.parent.parent
+_EVAL_SET_PATH = _CURRENT_DIR / "datasets" / "nested_loop_optimization.test.json"
+_OUTPUT_FILE_PATH = _PROJECT_ROOT / "artifacts" / "eval_results.csv"
 
 
 def test_eval_set_loads_and_is_non_empty() -> None:
     """EvalSet dataset is valid and contains exactly one eval case."""
-    eval_set = EvalSet.model_validate_json(Path(_EVAL_SET_FILE).read_text())
+    eval_set = EvalSet.model_validate_json(_EVAL_SET_PATH.read_text())
 
     assert eval_set.eval_set_id == "sustainable_code_eval"
     assert len(eval_set.eval_cases) == 1
@@ -34,7 +37,8 @@ async def test_nested_loop_optimization_response_quality() -> None:
     """Agent correctly identifies the inefficiency and suggests a greener alternative."""
     await AgentEvaluator.evaluate(
         agent_module=_AGENT_MODULE,
-        eval_dataset_file_path_or_dir=_EVAL_SET_FILE,
+        eval_dataset_file_path_or_dir=str(_EVAL_SET_PATH),
         num_runs=1,
-        print_detailed_results=True,
+        output_file=str(_OUTPUT_FILE_PATH),
+        print_detailed_results=False,
     )
