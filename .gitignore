@@ -5,6 +5,8 @@
 __pycache__/
 .pytest_cache/
 *.pyc
+.ruff_cache/
+artifacts/
 
 # Local environment
 .venv/

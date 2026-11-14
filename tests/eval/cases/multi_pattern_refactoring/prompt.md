@@ -1,3 +1,6 @@
+Can you measure and optimize this Python code to reduce CO₂ emissions and improve efficiency?
+
+```python
 """Unoptimized version - inefficient code for comparison."""
 
 # Inefficient: Creating list and then filtering
@@ -48,3 +51,4 @@ print(f"Average: {average:.2f}")
 print(f"Result: {result:.2f}")
 print(f"Unique items: {len(unique)}")
 print(f"Text: {text.strip()}")
+```

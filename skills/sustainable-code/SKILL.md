@@ -2,10 +2,6 @@
 name: sustainable-code
 description: 'Measure and optimize Python code to reduce CO₂ emissions. Use when: writing computationally intensive code, refactoring for efficiency, or comparing algorithm choices. Provides real emissions measurements and actionable optimizations.'
 compatibility: Requires Python 3.8+, CodeCarbon>=2.4.1, and Linux/macOS/Windows 11+ for hardware metrics
-metadata:
-  version: "0.1.0"
-  tags: sustainability, optimization, carbon, green-tech, python
-  scope: experimental
 ---
 
 ## Overview
